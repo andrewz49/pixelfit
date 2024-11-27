@@ -12,18 +12,19 @@ export default defineConfig({
     {
       file: 'dist/pixelfit.cjs.js',  // CommonJS格式的输出
       format: 'cjs',
-      sourcemap: true,  // 是否生成sourcemap
+      sourcemap: false,  // 是否生成sourcemap
       name: 'Pixelfit',  // 库的全局变量名称
+      exports: 'default', // 显式设置为 'default'
     },
     {
       file: 'dist/pixelfit.esm.js',  // ES模块格式的输出
       format: 'esm',
-      sourcemap: true,
+      sourcemap: false,
     },
     {
       file: 'dist/pixelfit.min.js',  // 压缩版
       format: 'umd',
-      sourcemap: true,
+      sourcemap: false,
       name: 'Pixelfit',  // UMD的全局变量名称
       plugins: [terser()],  // 使用terser插件压缩代码
     },
