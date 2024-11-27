@@ -1,7 +1,12 @@
-import { terser } from 'rollup-plugin-terser';  // 用于代码压缩
-import json from '@rollup/plugin-json';  // 用于处理JSON文件
+import { defineConfig } from 'rollup';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import babel from '@rollup/plugin-babel';
 import html from '@rollup/plugin-html';
-export default {
+import { terser } from 'rollup-plugin-terser';
+import del from 'rollup-plugin-delete';  // 导入插件
+
+export default defineConfig({
   input: 'src/index.js',  // 入口文件，指向你的源代码
   output: [
     {
@@ -24,13 +29,16 @@ export default {
     },
   ],
   plugins: [
-    json(),  // 处理json文件
+    del({ targets: 'dist/*' }),  // 在打包前清理 dist 目录
+    resolve(), // 解析 node_modules 模块
+    commonjs(), // 支持 CommonJS 转换为 ESM
+    babel({ babelHelpers: 'bundled' }), // 支持 Babel 转换
+    terser(), // 压缩代码
     html({
       title: 'Pixelfit - Responsive Design Tool',
       inject: {
         injectScript: '<script src="dist/pixelfit.min.js"></script>',
       },
     }),
-  ],
-  external: ['some-external-library'],  // 如果有外部依赖，不会将它们打包进库中
-};
+  ]
+});
