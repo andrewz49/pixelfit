@@ -1,6 +1,6 @@
 {
   "name": "pixelfit",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A lightweight and flexible screen adaptation library for mobile and large-screen devices.",
   "main": "dist/pixelfit.cjs.js",
   "module": "dist/pixelfit.esm.js",
