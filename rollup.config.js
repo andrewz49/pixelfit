@@ -1,6 +1,6 @@
 import { terser } from 'rollup-plugin-terser';  // 用于代码压缩
 import json from '@rollup/plugin-json';  // 用于处理JSON文件
-
+import html from '@rollup/plugin-html';
 export default {
   input: 'src/index.js',  // 入口文件，指向你的源代码
   output: [
@@ -25,6 +25,12 @@ export default {
   ],
   plugins: [
     json(),  // 处理json文件
+    html({
+      title: 'Pixelfit - Responsive Design Tool',
+      inject: {
+        injectScript: '<script src="dist/pixelfit.min.js"></script>',
+      },
+    }),
   ],
   external: ['some-external-library'],  // 如果有外部依赖，不会将它们打包进库中
 };
