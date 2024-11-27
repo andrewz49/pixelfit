@@ -118,7 +118,6 @@ Returns: `number` - The converted `px` value.
 project/
 ├── src/
 │   ├── index.js        # Your project entry point
-│   └── app.html        # Test page
 ├── dist/
 │   ├── pixelfit.min.js # Minified bundle
 ├── package.json        # NPM package details

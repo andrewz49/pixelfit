@@ -5,14 +5,15 @@
   "main": "dist/pixelfit.cjs.js",
   "module": "dist/pixelfit.esm.js",
   "browser": "dist/pixelfit.min.js",
+  "type": "module",
   "exports": {
     "import": "./dist/pixelfit.esm.js",
     "require": "./dist/pixelfit.cjs.js" 
   },
-  "scripts": {
-    "build": "rollup -c",
-    "test": "echo \"No tests yet\" && exit 0" 
-  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
   "keywords": [
     "screen adaptation",
     "responsive design",
@@ -21,22 +22,20 @@
     "rem",
     "px to rem"
   ],
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"No tests yet\" && exit 0" 
+  },
   "author": "AndrewZ01",
   "license": "MIT", 
   "repository": {
     "type": "git",
     "url": "https://github.com/AndrewWang0318/pixelfit.git"
   },
-  "bugs": {
-    "url": "https://github.com/AndrewWang0318/pixelfit/issues"
-  },
-  "homepage": "https://github.com/AndrewWang0318/pixelfit/blob/main/README.md",
   "devDependencies": {
-    "rollup": "^3.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "@rollup/plugin-json": "^4.1.0"
-  },
-  "peerDependencies": {
-    
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "rollup": "^2.79.2"
   }
 }
