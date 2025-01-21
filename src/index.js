@@ -14,6 +14,21 @@ class Pixelfit {
     }
   }
 
+  // 启动适配逻辑
+  init() {
+    // 默认类型是移动端，宽高默认值直接定义
+    this.type = type;
+    this.designWidth = width;
+    this.designHeight = height;
+    this.targetDom = target;
+    const applyAdp = () => {
+      if (this.type === 'm') this.mobileAdp();
+      if (this.type === 'l') this.largeScreenAdp();
+    };
+    applyAdp();
+    window.addEventListener("resize", applyAdp);
+  }
+
   // 大屏设备适配
   largeScreenAdp() {
     const { innerWidth: deviceWidth, innerHeight: deviceHeight } = window;
@@ -40,16 +55,7 @@ class Pixelfit {
     html.style.fontSize = `${(html.getBoundingClientRect().width / this.designWidth) * 100}px`;
   }
 
-  // 启动适配逻辑
-  pixelfit() {
-    const applyAdp = () => {
-      if (this.type === 'm') this.mobileAdp();
-      if (this.type === 'l') this.largeScreenAdp();
-    };
-
-    applyAdp();
-    window.addEventListener("resize", applyAdp);
-  }
+  
 
   // px 转 rem
   static px2rem(px, designWidth = 750) {
